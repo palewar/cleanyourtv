@@ -7,7 +7,7 @@ goes on top. Personal only: not for an upstream PR.
 | File | What |
 |---|---|
 | `config.json` | Launcher settings and the wallpaper rotation (see below) |
-| `wallpapers/1.jpg`…`6.jpg` | My photos, rotating on Home |
+| `wallpapers/` | My photos, rotating on Home, and `captions.txt` (`1.jpg<TAB>caption`); git-ignored, so they stay private |
 | `debloat.txt` | The ~55 packages disabled on this TV; `[boot]` marks the ones the firmware re-enables at every cold boot |
 | `push-theme.sh` | Pushes this theme with the native `adb`: config only, photo sync, or everything (see below) |
 
@@ -54,7 +54,8 @@ another theme folder that has no pictures, or yours are gone from the TV.
   the dock (`dock_title: false`, which also hides the shelf's "Last opened" line and dots).
 - Wi-Fi, Inputs and Settings as round icon buttons (`icon_only_buttons`, `icon_only_inputs`).
 - No "Good evening" greeting above the clock (`show_greeting: false`); the day and date on their own line under the clock (`date_below_clock`).
-- Wallpapers: the six photos, shuffled every 30 minutes, dimmed 30%, decoded in 32-bit colour.
+- Wallpapers: my photos, shuffled every 30 minutes, dimmed 30%, decoded in 32-bit colour, each with its date (and
+  place where the photo has GPS) under the top-right buttons, from `wallpapers/captions.txt` (`wallpaper_captions`).
 
 ## Debloat
 

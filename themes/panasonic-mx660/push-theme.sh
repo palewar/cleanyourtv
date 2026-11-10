@@ -4,7 +4,7 @@
 #
 # Usage: TV_HOST=192.168.1.20 themes/panasonic-mx660/push-theme.sh [--config | --full] [theme folder]
 #   (default)  config.json, then sync the photos: send only new or changed ones (by name and size) and delete
-#              the ones no longer in wallpapers/ here
+#              the ones no longer in wallpapers/ here; wallpapers/captions.txt is always sent (or removed)
 #   --config   config.json only; the photos on the TV stay as they are
 #   --full     config.json, then empty the TV's wallpapers/ and send every photo again (as tools/theme.sh does)
 # The theme folder defaults to themes/panasonic-mx660. TV_HOST may carry :5555 or not.
@@ -37,6 +37,7 @@ echo "config.json sent"
 if [ "$MODE" = full ]; then
   sh_tv "rm -f $DIR/wallpaper.jpg 2>/dev/null; content delete --uri $URI/wallpaper.jpg 2>/dev/null; mkdir -p $DIR/wallpapers 2>/dev/null; rm -f $DIR/wallpapers/* 2>/dev/null; content delete --uri $URI/wallpapers 2>/dev/null; true"
   for f in "$THEME"/wallpapers/*; do is_photo "$f" && { put "wallpapers/$(basename "$f")" "$f"; echo "sent $(basename "$f")"; }; done
+  [ -f "$THEME/wallpapers/captions.txt" ] && { put wallpapers/captions.txt "$THEME/wallpapers/captions.txt"; echo "sent captions.txt"; }
 elif [ "$MODE" = sync ]; then
   # name<TAB>size of every picture on the TV
   REMOTE=$(sh_tv "cd $DIR/wallpapers 2>/dev/null && for f in *; do [ -f \"\$f\" ] && printf '%s\t%s\n' \"\$f\" \"\$(wc -c < \"\$f\")\"; done" | tr -d '\r')
@@ -52,6 +53,9 @@ elif [ "$MODE" = sync ]; then
     if [ ! -f "$THEME/wallpapers/$n" ]; then del "wallpapers/$n"; echo "removed $n from the TV"; removed=$((removed+1)); fi
   done <<< "$REMOTE"
   echo "photos: $sent sent, $removed removed, the rest already on the TV"
+  # captions.txt is tiny: send it whenever it exists here, delete it from the TV when it does not
+  if [ -f "$THEME/wallpapers/captions.txt" ]; then put wallpapers/captions.txt "$THEME/wallpapers/captions.txt"; echo "sent captions.txt"
+  else del wallpapers/captions.txt; fi
 fi
 
 REV=$(uuidgen | tr -d -)
