@@ -35,5 +35,7 @@
   "wallpaper_dim": 30,
   "cinematic_art": 0,
   "cinematic_scrim": 50,
-  "ambient_glow": false
+  "ambient_glow": false,
+  "dock_title": false,
+  "icon_only_buttons": true
 }

@@ -39,7 +39,9 @@ folder, never a theme without the pictures.
   here via `stock_home_redirect`, and `restore_key_services` turns the helper back on after a force stop.
 - Remote's Settings (gear) button, keycode 83, opens TV Settings.
 - Home at every power-on, also when the TV was switched off on an HDMI input.
-- Cinematic shelf with the app art off (`cinematic_art: 0`, scrim 50), no app-colour glow.
+- Cinematic shelf with the app art off (`cinematic_art: 0`, scrim 50), no app-colour glow, no app name above
+  the dock (`dock_title: false`, which also hides the shelf's "Last opened" line and dots).
+- Wi-Fi and Settings as round icon buttons, Inputs keeps its label (`icon_only_buttons`).
 - Wallpapers: the six photos, shuffled every 30 minutes, dimmed 30%, decoded in 32-bit colour.
 
 ## Debloat
