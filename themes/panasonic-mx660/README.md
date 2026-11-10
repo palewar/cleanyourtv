@@ -54,8 +54,8 @@ another theme folder that has no pictures, or yours are gone from the TV.
   the dock (`dock_title: false`, which also hides the shelf's "Last opened" line and dots).
 - Wi-Fi, Inputs and Settings as round icon buttons (`icon_only_buttons`, `icon_only_inputs`).
 - No "Good evening" greeting above the clock (`show_greeting: false`); the day and date on their own line under the clock (`date_below_clock`).
-- Wallpapers: my photos, shuffled every 30 minutes, dimmed 30%, decoded in 32-bit colour, each with its date (and
-  place where the photo has GPS) under the top-right buttons, from `wallpapers/captions.txt` (`wallpaper_captions`).
+- Wallpapers: my photos, shuffled every 30 minutes, dimmed 30%, decoded in 32-bit colour. Captions are off (`wallpaper_captions:
+  false`); `wallpapers/captions.txt` holds each photo's date and place, ready to switch on.
 
 ## Debloat
 

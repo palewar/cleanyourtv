@@ -41,5 +41,5 @@
   "icon_only_inputs": true,
   "show_greeting": false,
   "date_below_clock": true,
-  "wallpaper_captions": true
+  "wallpaper_captions": false
 }
