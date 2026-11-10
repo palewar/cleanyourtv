@@ -15,14 +15,21 @@ goes on top. Personal only: not for an upstream PR.
 
 ```bash
 git pull upstream main && git push origin main
-adb connect 192.168.1.24:5555
-TV_ADB_BINARY=adb TV_HOST=192.168.1.24:5555 STOCK_LAUNCHER=none HOME_KEY_SERVICE=1 RESTORE_KEY_SERVICES=1 launcher/build-and-install.sh
-TV_ADB_BINARY=adb TV_HOST=192.168.1.24:5555 tools/theme.sh themes/panasonic-mx660
+adb connect 192.168.1.20:5555
+TV_ADB_BINARY=adb TV_HOST=192.168.1.20:5555 STOCK_LAUNCHER=none HOME_KEY_SERVICE=1 RESTORE_KEY_SERVICES=1 launcher/build-and-install.sh
+TV_ADB_BINARY=adb TV_HOST=192.168.1.20:5555 tools/theme.sh themes/panasonic-mx660
 ```
 
 `TV_ADB_BINARY=adb` makes the repo's tools use the native `adb`, because macOS Local Network privacy blocks
-their Python ADB client on this Mac (`tools/native-adb.md`). If that ever fails, `TV_HOST=192.168.1.24
-themes/panasonic-mx660/push-theme.sh` does the same push with plain `adb`.
+their Python ADB client on this Mac (`tools/native-adb.md`). If that ever fails,
+`TV_HOST=192.168.1.20 themes/panasonic-mx660/push-theme.sh` does the same push with plain `adb`.
+
+After changing only `config.json`, skip re-sending the photos (both `theme.sh` and the full push re-send
+all six every time):
+
+```bash
+TV_HOST=192.168.1.20 themes/panasonic-mx660/push-theme.sh --config
+```
 
 `RESTORE_KEY_SERVICES=1` matters: without it the install takes back WRITE_SECURE_SETTINGS and
 `restore_key_services` does nothing.
@@ -47,8 +54,8 @@ folder, never a theme without the pictures.
 ## Debloat
 
 ```bash
-TV_ADB_BINARY=adb TV_HOST=192.168.1.24:5555 tools/disable.sh themes/panasonic-mx660/debloat.txt
-TV_ADB_BINARY=adb TV_HOST=192.168.1.24:5555 tools/venv/bin/python -I tools/check.py themes/panasonic-mx660/debloat.txt com.google.android.apps.tv.launcherx
+TV_ADB_BINARY=adb TV_HOST=192.168.1.20:5555 tools/disable.sh themes/panasonic-mx660/debloat.txt
+TV_ADB_BINARY=adb TV_HOST=192.168.1.20:5555 tools/venv/bin/python -I tools/check.py themes/panasonic-mx660/debloat.txt com.google.android.apps.tv.launcherx
 ```
 
 The second line, after a firmware update, shows what came back; add `--fix` to disable it again.
