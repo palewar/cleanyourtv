@@ -53,7 +53,7 @@ another theme folder that has no pictures, or yours are gone from the TV.
 - Cinematic shelf with the app art off (`cinematic_art: 0`, scrim 50), no app-colour glow, no app name above
   the dock (`dock_title: false`, which also hides the shelf's "Last opened" line and dots).
 - Wi-Fi, Inputs and Settings as round icon buttons (`icon_only_buttons`, `icon_only_inputs`).
-- No "Good evening" greeting above the clock (`show_greeting: false`); the day and date stay beside the clock.
+- No "Good evening" greeting above the clock (`show_greeting: false`); the day and date on their own line under the clock (`date_below_clock`).
 - Wallpapers: the six photos, shuffled every 30 minutes, dimmed 30%, decoded in 32-bit colour.
 
 ## Debloat
