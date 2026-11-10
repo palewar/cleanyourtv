@@ -1,0 +1,86 @@
+# Panasonic TH-65MX660DX 65" Google TV (MOKA R4_GTV, Realtek rtd2851m, 2 GB), Android TV 14
+# Cleaned on 2026-10-26. Personal list, kept in work/ (git-ignored).
+#
+# Check after a firmware update (ADB open again first):
+#   TV_HOST=192.168.1.24 tools/venv/bin/python -I tools/check.py work/panasonic-th65mx660dx/debloat.txt com.google.android.apps.tv.launcherx
+#   ... add --fix to disable what came back and put the launcher back.
+# Undo everything: TV_HOST=192.168.1.24 tools/restore.sh work/panasonic-th65mx660dx/debloat.txt
+#   (or backup/panasonic-th65mx660dx-20261026/restore.sh)
+# Everything is DISABLED, not uninstalled.
+#
+# MOKA firmware: com.android.tv.settings re-enables a fixed list of packages at every cold boot (power cut or
+# unplug; standby does not). Lines marked [boot] come back then; check.py reports them as drift, and --fix only
+# keeps them off until the next cold boot. See docs/devices/acer-r4g.md.
+#
+# Home: launcherx and setupwraith stay ENABLED on this firmware (disabling them gives a black Home after a cold
+# boot). The new launcher takes Home through HomeKeyService with stock_home_redirect=launcherx, which is why
+# check.py gets launcherx as the second argument.
+#
+# Firmware updaters are disabled by the owner's choice; they come back at every cold boot anyway ([boot]).
+# Kept on purpose: Play Store, Play Services, TV Settings, Live TV (com.realtek.tv) and the HDMI inputs,
+# remote/Bluetooth, keyboard, the streaming apps, YouTube Music, Apple TV.
+
+# Android extras not needed on a TV
+com.android.dreams.basic
+com.android.wallpaperbackup
+com.android.wallpaper.livepicker
+com.android.dynsystem
+com.android.managedprovisioning
+com.android.localtransport
+com.android.sharedstoragebackup
+com.android.htmlviewer
+com.android.pacprocessor
+com.android.captiveportallogin               # hotel/captive Wi-Fi login page: re-enable if you need one
+com.android.se
+com.android.companiondevicemanager
+com.android.vpndialogs
+com.android.certinstaller
+com.android.providers.calendar
+com.android.providers.contacts
+com.android.printspooler                     # already disabled when the TV was first checked
+
+# Google extras
+com.google.android.feedback                  # [boot]
+com.google.android.play.games                # [boot]
+com.google.android.apps.tv.dreamx            # [boot] Google TV ambient screensaver
+com.google.android.syncadapters.calendar
+com.google.android.onetimeinitializer
+com.google.android.partnersetup
+com.google.android.presetup.bluetoothpair
+com.google.android.marvin.talkback           # TalkBack screen reader: keep it if anyone uses it
+com.google.android.apps.initsetup
+com.android.tv.feedbackconsent               # already disabled when the TV was first checked
+
+# Voice assistant, Chromecast, Play Movies (owner's choice)
+com.google.android.katniss                   # [boot] Gemini / Assistant
+com.google.android.apps.mediashell           # Chromecast built-in
+com.google.android.videos                    # [boot] Google Play Movies & TV
+
+# MOKA / SCBC preloads, demo and background apps
+com.apps.esticker                            # [boot]
+com.apps.esticker3                           # [boot]
+com.apps.function.gdpr                       # [boot] data-consent agent
+com.apps.scast                               # [boot] casting receiver
+com.creative.fastscreen.tv                   # [boot] FastCast screen mirroring
+com.apps.biz.mt                              # [boot] Meeting Mode
+com.apps.biz.ds                              # came back after the first cold boot too
+com.mk.tv.meeting.service                    # [boot]
+com.apps.function.audiolink                  # [boot] AudioLink
+com.mk.tv.timeclock                          # [boot] World Clock
+com.apps.tvmanager                           # [boot] TV Manager
+com.apps.wifihotspot
+com.apps.mk.wd                               # ad/content boot receiver
+android.autoinstalls.config.scbc.device      # Play auto-installs of partner apps
+com.mk.tv.systemserver
+com.realtek.leanbacklauncher.partnercustomizer
+com.apps.plugins
+com.apps.usbmediaplayer                      # USB media player: re-enable to play files from a USB stick
+com.spocky.projengmenu
+com.mxtech.videoplayer.television            # already disabled when the TV was first checked
+com.seraphic.hbbtv.app                       # already disabled when the TV was first checked
+
+# Firmware updaters (owner's choice; see the header)
+com.apps.ota                                 # [boot] System Upgrade
+com.apps.authota                             # [boot]
+com.realsil.ota                              # [boot]
+com.google.android.tv.dfuservice             # [boot]

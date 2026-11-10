@@ -22,9 +22,18 @@
   ],
   "live_tv_package": "com.realtek.tv",
   "stock_home_redirect": "com.google.android.apps.tv.launcherx",
-  "settings_key_keycodes": [83],
+  "settings_key_keycodes": [
+    83
+  ],
   "restore_key_services": true,
   "power_on_home_always": true,
   "cinematic_home": true,
-  "wallpaper_true_color": true
+  "wallpaper_true_color": true,
+  "wallpaper": true,
+  "wallpaper_rotation_minutes": 30,
+  "wallpaper_order": "shuffle",
+  "wallpaper_dim": 30,
+  "cinematic_art": 0,
+  "cinematic_scrim": 50,
+  "ambient_glow": false
 }
