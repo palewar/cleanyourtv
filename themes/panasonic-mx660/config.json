@@ -1,0 +1,30 @@
+{
+  "dock_apps": [
+    "com.netflix.ninja",
+    "com.amazon.amazonvideo.livingroom",
+    "com.google.android.youtube.tv",
+    "in.startv.hotstar",
+    "com.apple.atve.androidtv.appletv",
+    "tv.airtel.xstream.tvapp",
+    "com.spotify.tv.android"
+  ],
+  "columns": 7,
+  "hidden_apps": [
+    "com.realtek.tv",
+    "com.apps.function.audiolink",
+    "com.creative.fastscreen.tv",
+    "com.apps.biz.mt",
+    "com.google.android.play.games",
+    "com.google.android.videos",
+    "com.apps.ota",
+    "com.apps.tvmanager",
+    "com.mk.tv.timeclock"
+  ],
+  "live_tv_package": "com.realtek.tv",
+  "stock_home_redirect": "com.google.android.apps.tv.launcherx",
+  "settings_key_keycodes": [83],
+  "restore_key_services": true,
+  "power_on_home_always": true,
+  "cinematic_home": true,
+  "wallpaper_true_color": true
+}
