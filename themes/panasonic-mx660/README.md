@@ -9,7 +9,7 @@ goes on top. Personal only: not for an upstream PR.
 | `config.json` | Launcher settings and the wallpaper rotation (see below) |
 | `wallpapers/1.jpg`…`6.jpg` | My photos, rotating on Home |
 | `debloat.txt` | The ~55 packages disabled on this TV; `[boot]` marks the ones the firmware re-enables at every cold boot |
-| `push-theme.sh` | Pushes this theme with the native `adb` (fallback, see below) |
+| `push-theme.sh` | Pushes this theme with the native `adb`: config only, photo sync, or everything (see below) |
 
 ## Update and push
 
@@ -21,21 +21,25 @@ TV_ADB_BINARY=adb TV_HOST=192.168.1.20:5555 tools/theme.sh themes/panasonic-mx66
 ```
 
 `TV_ADB_BINARY=adb` makes the repo's tools use the native `adb`, because macOS Local Network privacy blocks
-their Python ADB client on this Mac (`tools/native-adb.md`). If that ever fails,
-`TV_HOST=192.168.1.20 themes/panasonic-mx660/push-theme.sh` does the same push with plain `adb`.
+their Python ADB client on this Mac (`tools/native-adb.md`).
 
-After changing only `config.json`, skip re-sending the photos (both `theme.sh` and the full push re-send
-all six every time):
+For day-to-day changes use this folder's own `push-theme.sh` instead of `tools/theme.sh`, which empties the TV's
+`wallpapers/` and re-sends every photo each time:
 
 ```bash
-TV_HOST=192.168.1.20 themes/panasonic-mx660/push-theme.sh --config
+TV_HOST=192.168.1.20 themes/panasonic-mx660/push-theme.sh            # config.json + photo sync
+TV_HOST=192.168.1.20 themes/panasonic-mx660/push-theme.sh --config   # config.json only
+TV_HOST=192.168.1.20 themes/panasonic-mx660/push-theme.sh --full     # everything again, like theme.sh
 ```
+
+The sync compares `wallpapers/` here with the TV's by name and size: it sends only new or changed photos and
+deletes from the TV the ones removed here. So to add or drop a photo, change `wallpapers/` and run the first line.
 
 `RESTORE_KEY_SERVICES=1` matters: without it the install takes back WRITE_SECURE_SETTINGS and
 `restore_key_services` does nothing.
 
-A theme push empties the TV's `wallpapers/` folder and replaces its `config.json`, so always push this whole
-folder, never a theme without the pictures.
+`tools/theme.sh` (and `--full`) empty the TV's `wallpapers/` folder and replace its `config.json`, so never push
+another theme folder that has no pictures, or yours are gone from the TV.
 
 ## What it sets
 
