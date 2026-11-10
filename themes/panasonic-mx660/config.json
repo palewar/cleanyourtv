@@ -37,5 +37,6 @@
   "cinematic_scrim": 50,
   "ambient_glow": false,
   "dock_title": false,
-  "icon_only_buttons": true
+  "icon_only_buttons": true,
+  "icon_only_inputs": true
 }

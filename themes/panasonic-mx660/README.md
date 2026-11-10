@@ -41,7 +41,7 @@ folder, never a theme without the pictures.
 - Home at every power-on, also when the TV was switched off on an HDMI input.
 - Cinematic shelf with the app art off (`cinematic_art: 0`, scrim 50), no app-colour glow, no app name above
   the dock (`dock_title: false`, which also hides the shelf's "Last opened" line and dots).
-- Wi-Fi and Settings as round icon buttons, Inputs keeps its label (`icon_only_buttons`).
+- Wi-Fi, Inputs and Settings as round icon buttons (`icon_only_buttons`, `icon_only_inputs`).
 - Wallpapers: the six photos, shuffled every 30 minutes, dimmed 30%, decoded in 32-bit colour.
 
 ## Debloat
