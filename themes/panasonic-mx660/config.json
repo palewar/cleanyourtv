@@ -38,5 +38,6 @@
   "ambient_glow": false,
   "dock_title": false,
   "icon_only_buttons": true,
-  "icon_only_inputs": true
+  "icon_only_inputs": true,
+  "show_greeting": false
 }
